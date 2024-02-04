@@ -128,6 +128,37 @@ class _FinancePageState extends State<FinancePage> {
               ),
             ],
           ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            decoration: BoxDecoration(
+              color: Color.fromARGB(99, 0, 115, 255),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            height: 50,
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Valor Total: ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w200,
+                    ),
+                  ),
+                  Text(
+                    '',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           list.isNotEmpty
               ? Expanded(
                   child: ListView.builder(

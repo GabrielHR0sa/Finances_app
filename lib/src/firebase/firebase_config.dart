@@ -61,8 +61,8 @@ class FirebaseConfig {
     return allData;
   }
 
-  static delete(BuildContext context, String doc) async {
-    var result = FirebaseFirestore.instance.collection('Janeiro');
+  static delete(BuildContext context, String doc, String collection) async {
+    var result = FirebaseFirestore.instance.collection(collection);
 
     return result
         .doc(doc)

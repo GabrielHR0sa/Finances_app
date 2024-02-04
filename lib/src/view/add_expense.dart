@@ -38,7 +38,7 @@ class _AddPageState extends State<AddPage> {
         ),
         title: const Center(
           child: Text(
-            'Cadastro Firebase',
+            'Adicionar Conta',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -104,7 +104,7 @@ class _AddPageState extends State<AddPage> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: 'Preço',
+                    labelText: 'Valor',
                     border: OutlineInputBorder(
                       borderSide:
                           const BorderSide(width: 1, color: Colors.transparent),

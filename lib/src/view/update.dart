@@ -50,7 +50,7 @@ class _UpdatePageState extends State<UpdatePage> {
         ),
         title: const Center(
             child: Text(
-          'Alterar Cadastro',
+          'Alterar Conta',
           style: TextStyle(color: Colors.white),
         )),
         actions: [
@@ -60,7 +60,7 @@ class _UpdatePageState extends State<UpdatePage> {
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
                 onPressed: () {
-                  Dialogs.deleteDoc(context, _id.text);
+                  Dialogs.deleteDoc(context, _id.text, searchMonth);
                 },
                 icon: const Icon(
                   Icons.delete,
@@ -134,7 +134,7 @@ class _UpdatePageState extends State<UpdatePage> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    prefixText: 'Preço: ',
+                    prefixText: 'Valor: ',
                     prefixStyle: const TextStyle(color: Colors.black54),
                     border: OutlineInputBorder(
                       borderSide:

@@ -101,7 +101,7 @@ class Dialogs {
     );
   }
 
-  static deleteDoc(BuildContext context, String doc) {
+  static deleteDoc(BuildContext context, String doc, String collection) {
     return showDialog(
       context: context,
       builder: (context) {
@@ -131,7 +131,7 @@ class Dialogs {
                     backgroundColor: Colors.green,
                   ),
                   onPressed: () {
-                    FirebaseConfig.delete(context, doc);
+                    FirebaseConfig.delete(context, doc, collection);
                     FirebaseConfig.getAllDocs(searchMonth);
                     Navigator.of(context).pop();
                   },
