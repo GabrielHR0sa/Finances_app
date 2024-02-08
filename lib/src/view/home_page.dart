@@ -1,6 +1,7 @@
 import 'package:finances_app/src/model/month.dart';
 import 'package:finances_app/src/view/finance_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -66,7 +67,7 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
-      ),
+      ).animate().fadeIn(curve: Curves.easeInOut, duration: 1500.ms),
     );
   }
 }

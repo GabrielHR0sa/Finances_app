@@ -1,11 +1,14 @@
 import 'package:finances_app/src/firebase/firebase_config.dart';
 import 'package:finances_app/src/view/update.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 List data = [];
 List list = [];
 String searchMonth = '';
 dynamic teste;
+List listConvert = [];
+double sum = 0;
 
 class FinancePage extends StatefulWidget {
   const FinancePage({super.key});
@@ -26,12 +29,16 @@ class _FinancePageState extends State<FinancePage> {
   _initData() async {
     list = await FirebaseConfig.getAllDocs(searchMonth);
     setState(() {});
+    for (int i = 0; i < list.length; i++) {
+      listConvert.add(int.parse(list[i]['preco']));
+    }
     return list;
   }
 
   @override
   initState() {
     super.initState();
+
     _initData().then((_) {
       setState(() {});
     });
@@ -49,10 +56,19 @@ class _FinancePageState extends State<FinancePage> {
     );
   }
 
+  _listSum() {
+    for (int i = 0; i < listConvert.length; i++) {
+      sum += listConvert[i];
+    }
+    return sum;
+  }
+
   @override
   void dispose() {
     list = [];
+    listConvert = [];
     searchMonth = '';
+    sum = 0;
     super.dispose();
   }
 
@@ -148,7 +164,7 @@ class _FinancePageState extends State<FinancePage> {
                     ),
                   ),
                   Text(
-                    '',
+                    ' R\$ ${_listSum()}',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -165,6 +181,7 @@ class _FinancePageState extends State<FinancePage> {
                     itemCount: list.length,
                     itemBuilder: (context, index) {
                       final dados = list[index];
+                      print(listConvert);
                       return Card(
                         elevation: 5,
                         child: Padding(
@@ -244,9 +261,17 @@ class _FinancePageState extends State<FinancePage> {
                     },
                   ),
                 )
+                  .animate()
+                  .fadeIn(curve: Curves.easeInOut, duration: 1000.ms)
+                  .slide(
+                    curve: Curves.easeInOut,
+                    duration: 1500.ms,
+                    begin: Offset(0, 1),
+                    end: Offset(0, 0),
+                  )
               : Container(),
         ],
       ),
-    );
+    ).animate().fadeIn(curve: Curves.easeInOut, duration: 700.ms);
   }
 }
