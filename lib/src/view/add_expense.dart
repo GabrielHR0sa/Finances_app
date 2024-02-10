@@ -61,6 +61,7 @@ class _AddPageState extends State<AddPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   controller: _idAcss,
                   decoration: InputDecoration(
                     filled: true,
@@ -100,6 +101,7 @@ class _AddPageState extends State<AddPage> {
                   ),
                 ),
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   controller: _preco,
                   decoration: InputDecoration(
                     filled: true,
@@ -124,7 +126,7 @@ class _AddPageState extends State<AddPage> {
                             _idAcss.text,
                             _titulo.text,
                             _descricao.text,
-                            _preco.text,
+                            double.parse(_preco.text),
                             _idAcss.text,
                             'CD',
                             searchMonth);

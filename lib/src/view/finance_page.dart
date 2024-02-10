@@ -30,7 +30,7 @@ class _FinancePageState extends State<FinancePage> {
     list = await FirebaseConfig.getAllDocs(searchMonth);
     setState(() {});
     for (int i = 0; i < list.length; i++) {
-      listConvert.add(int.parse(list[i]['preco']));
+      listConvert.add(list[i]['preco']);
     }
     return list;
   }
@@ -132,7 +132,10 @@ class _FinancePageState extends State<FinancePage> {
                   onPressed: () {
                     Navigator.of(context).pushNamed('/add').then((_) {
                       FirebaseConfig.getAllDocs(searchMonth);
+
                       setState(() {
+                        sum = 0;
+
                         list = data;
                       });
                     });
@@ -203,15 +206,17 @@ class _FinancePageState extends State<FinancePage> {
                             trailing: IconButton(
                               onPressed: () {
                                 getValues(
-                                    dados['id'] ?? '',
-                                    dados['titulo'] ?? '',
-                                    dados['descricao'] ?? '',
-                                    dados['preco'] ?? '');
+                                  dados['id'] ?? '',
+                                  dados['titulo'] ?? '',
+                                  dados['descricao'] ?? '',
+                                  dados['preco'].toDouble(),
+                                );
                                 Navigator.of(context)
                                     .pushNamed('/update')
                                     .then((_) {
                                   FirebaseConfig.getAllDocs(searchMonth);
                                   setState(() {
+                                    sum = 0;
                                     list = data;
                                   });
                                 });

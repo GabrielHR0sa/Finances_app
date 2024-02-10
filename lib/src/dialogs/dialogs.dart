@@ -54,6 +54,8 @@ class Dialogs {
                   onPressed: () {
                     FirebaseConfig.getAllDocs(searchMonth);
                     Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
                   },
                   child: const Text(
                     'OK',
@@ -87,6 +89,7 @@ class Dialogs {
                 FirebaseConfig.getAllDocs(searchMonth);
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
+                Navigator.of(context).pop();
               },
               child: const Text(
                 'Ok',
@@ -95,6 +98,56 @@ class Dialogs {
                 ),
               ),
             ),
+          ],
+        );
+      },
+    );
+  }
+
+  static addSuccess(BuildContext context, String doc, String collection,
+      String title, String message) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Center(child: Text(title)),
+          content: Text(message),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'Não',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'Sim',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ],
+            )
           ],
         );
       },
@@ -130,8 +183,8 @@ class Dialogs {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                   ),
-                  onPressed: () {
-                    FirebaseConfig.delete(context, doc, collection);
+                  onPressed: () async {
+                    await FirebaseConfig.delete(context, doc, collection);
                     FirebaseConfig.getAllDocs(searchMonth);
                     Navigator.of(context).pop();
                   },

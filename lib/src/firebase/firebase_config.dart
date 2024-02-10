@@ -9,7 +9,7 @@ class FirebaseConfig {
       String doc,
       String titulo,
       String descricao,
-      String preco,
+      double preco,
       String id,
       String operation,
       String collection) async {
@@ -25,7 +25,13 @@ class FirebaseConfig {
             'id': id
           })
           .then(
-            (value) => Dialogs.ok(context, 'Conta cadastrada com sucesso'),
+            (value) => Dialogs.addSuccess(
+              context,
+              doc,
+              collection,
+              'Conta cadastrada com Sucesso!',
+              'Deseja Cadastrar outra conta?',
+            ),
           )
           .catchError(
             (error) =>

@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 String doc = '';
 String name = '';
-String pass = '';
-String mail = '';
+String descricao = '';
+double preco = 0.0;
 
-getValues(String id, String titulo, String descricao, String preco) {
+getValues(String id, String titulo, String descricaov, double precov) {
   doc = id;
   name = titulo;
-  pass = descricao;
-  mail = preco;
+  descricao = descricaov;
+  preco = precov;
 }
 
 TextEditingController _id = TextEditingController();
@@ -33,8 +33,8 @@ class _UpdatePageState extends State<UpdatePage> {
     super.initState();
     _id = TextEditingController(text: doc);
     _titulo = TextEditingController(text: name);
-    _descricao = TextEditingController(text: pass);
-    _preco = TextEditingController(text: mail);
+    _descricao = TextEditingController(text: descricao);
+    _preco = TextEditingController(text: preco.toString());
   }
 
   @override
@@ -89,6 +89,7 @@ class _UpdatePageState extends State<UpdatePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextFormField(
+                  readOnly: true,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -131,6 +132,7 @@ class _UpdatePageState extends State<UpdatePage> {
                   controller: _descricao,
                 ),
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -156,7 +158,7 @@ class _UpdatePageState extends State<UpdatePage> {
                           _id.text,
                           _titulo.text,
                           _descricao.text,
-                          _preco.text,
+                          double.parse(_preco.text),
                           _id.text,
                           'UP',
                           searchMonth);
