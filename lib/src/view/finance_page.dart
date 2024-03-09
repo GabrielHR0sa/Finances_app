@@ -150,7 +150,7 @@ class _FinancePageState extends State<FinancePage> {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
-              color: Color.fromARGB(99, 0, 115, 255),
+              color: Color.fromARGB(98, 78, 78, 78),
               borderRadius: BorderRadius.circular(10),
             ),
             height: 50,
@@ -194,7 +194,7 @@ class _FinancePageState extends State<FinancePage> {
                               child: Container(
                                 height: 50,
                                 width: 50,
-                                color: const Color.fromARGB(99, 0, 115, 255),
+                                color: Color.fromARGB(98, 78, 78, 78),
                                 child: Center(
                                   child: Text(
                                     dados['id'] ?? '',

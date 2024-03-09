@@ -202,4 +202,37 @@ class Dialogs {
       },
     );
   }
+
+  static login(BuildContext context, String text) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Center(
+            child: Text('Erro'),
+          ),
+          content: Text(text),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                  onPressed: () {
+                    FirebaseConfig.getAllDocs(searchMonth);
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'OK',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            )
+          ],
+        );
+      },
+    );
+  }
 }

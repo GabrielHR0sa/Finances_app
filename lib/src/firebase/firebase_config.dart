@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finances_app/src/dialogs/dialogs.dart';
 import 'package:finances_app/src/view/finance_page.dart';
+import 'package:finances_app/src/view/login_page.dart';
 import 'package:flutter/material.dart';
 
 class FirebaseConfig {
@@ -79,5 +80,14 @@ class FirebaseConfig {
         .catchError(
           (error) => Dialogs.falhaVerifica(context, 'Falha ao deletar a conta'),
         );
+  }
+
+  static login(String user, String pass) async {
+    var result = FirebaseFirestore.instance.collection('login');
+
+    QuerySnapshot querySnapshot = await result.get();
+
+    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    getLoginInfo(allData);
   }
 }
